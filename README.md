@@ -107,7 +107,7 @@ Escalating DOB-driven birthday campaigns (7 / 5 / 2 / 0 days out) via AiSensy Wh
 
 ### 📞 Call Analysis CRM
 
-AI-powered sales call pipeline: MacroDroid call-end popup → Google Sheets webhook → automatic recording attachment per salesperson → AI summary. ~10 salespeople, ~1-minute sync.
+AI-powered sales call pipeline: phone recordings sync automatically via **FolderSync → Google Drive → Apps Script** (attaches each recording to the right salesperson's log, auto-discovered by name + date) → **AI summarises** every call. ~10 salespeople, zero manual steps.
 
 ---
 
