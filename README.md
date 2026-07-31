@@ -1,6 +1,6 @@
 # Souvik Kundu — BI & Automation Engineer
 
-> **Self-taught. Solo. 22 outlets. Everything — from POS data to dashboard to AI — built by one person.**
+> **Self-taught. Solo. 25+ outlets. Everything — from POS data to dashboard to AI — built by one person.**
 
 I design and run the complete data + AI stack for a multi-outlet family-entertainment chain across India. No data team, no enterprise tools budget. Just real business problems that needed solving, and whatever it took to solve them.
 
@@ -10,7 +10,7 @@ I design and run the complete data + AI stack for a multi-outlet family-entertai
 
 <table>
 <tr>
-<td align="center"><b>22</b><br><sub>outlets across India</sub></td>
+<td align="center"><b>25+</b><br><sub>outlets across India</sub></td>
 <td align="center"><b>3</b><br><sub>POS systems unified</sub></td>
 <td align="center"><b>25+</b><br><sub>analytics modules</sub></td>
 <td align="center"><b>8+</b><br><sub>production systems</sub></td>
@@ -24,7 +24,7 @@ I design and run the complete data + AI stack for a multi-outlet family-entertai
 
 ### 📊 Real-Time BI Platform — 25+ analytics modules
 
-I built a single-page analytics dashboard covering an entire entertainment chain — **22 outlets, 2 brands, 3 POS systems unified into one source of truth**. Leadership now opens a browser instead of waiting on manual spreadsheet exports.
+I built a single-page analytics dashboard covering an entire entertainment chain — **25+ outlets, 2 brands, 3 POS systems unified into one source of truth**. Leadership now opens a browser instead of waiting on manual spreadsheet exports.
 
 I reconciled **Semnox/Parafait** (arcade/wallet), **PetPooja** (F&B), and the internal activity API into a single trusted revenue definition. I diagnosed and fixed a POS API bug that silently **double-counted F&B revenue ~2× every night** — dashboard numbers now match source systems exactly. I migrated the full data layer to **Supabase/PostgreSQL + GitHub Actions** sync pipelines, eliminating the 10-second timeout failures on the previous cache system.
 
@@ -64,7 +64,7 @@ I reconciled **Semnox/Parafait** (arcade/wallet), **PetPooja** (F&B), and the in
 - Promotions Analysis — incentive programme ROI tracking
 
 **Platform Features**
-- Live Geo Map — all 22 outlets on Leaflet.js, click-through to store detail
+- Live Geo Map — all 25+ outlets on Leaflet.js, click-through to store detail
 - Multi-company — Jus Jumpin (FEC) + The Knockout (sports bar) in one dashboard
 - Multi-POS — Semnox/Parafait (arcade/wallet) + PetPooja (F&B) + internal activity API
 - AI Assistant — ask questions in plain English via Gemini LLM (voice + text, live data context)
@@ -81,7 +81,7 @@ I built an async AI interview system deployed at `jusjumpin-hr-interviews.netlif
 
 ### 🧮 Incentive Automation API
 
-I built a REST API + dashboard that replaced a full day of monthly manual Excel work. **63,000+ voucher records, 22 stores, per-store owner-active rule, 28 rate tiers, charm pricing** — all computed server-side. Month-end incentive calculation: **8 hours → one click**. Stack: `Node.js` `Supabase` `PostgreSQL` `Netlify Functions`.
+I built a REST API + dashboard that replaced a full day of monthly manual Excel work. **63,000+ voucher records, 25+ stores, per-store owner-active rule, 28 rate tiers, charm pricing** — all computed server-side. Month-end incentive calculation: **8 hours → one click**. Stack: `Node.js` `Supabase` `PostgreSQL` `Netlify Functions`.
 
 ---
 
