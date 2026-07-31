@@ -24,7 +24,9 @@ I design and run the complete data + AI stack for a multi-outlet family-entertai
 
 ### 📊 Real-Time BI Platform — 25+ analytics modules
 
-A single-page analytics dashboard covering an entire entertainment chain. Three POS systems, two brands, 22 outlets — one source of truth.
+I built a single-page analytics dashboard covering an entire entertainment chain — **22 outlets, 2 brands, 3 POS systems unified into one source of truth**. Leadership now opens a browser instead of waiting on manual spreadsheet exports.
+
+I reconciled **Semnox/Parafait** (arcade/wallet), **PetPooja** (F&B), and the internal activity API into a single trusted revenue definition. I diagnosed and fixed a POS API bug that silently **double-counted F&B revenue ~2× every night** — dashboard numbers now match source systems exactly. I migrated the full data layer to **Supabase/PostgreSQL + GitHub Actions** sync pipelines, eliminating the 10-second timeout failures on the previous cache system.
 
 **Revenue & Operations**
 - Revenue & Total Sales — per outlet, per company, per day; activity / F&B / combined views
@@ -73,19 +75,19 @@ A single-page analytics dashboard covering an entire entertainment chain. Three 
 
 ### 🎤 ARIA — AI Interview System *(live in production)*
 
-Automated candidate interviews: candidates answer in their own time, Gemini LLM scores structured rubrics, hiring managers read a summary instead of 40 recorded calls. Deployed at `jusjumpin-hr-interviews.netlify.app`.
+I built an async AI interview system deployed at `jusjumpin-hr-interviews.netlify.app`. Candidates answer in their own time → **Gemini LLM scores structured rubrics → hiring managers read one summary instead of listening to 40+ recorded calls per cycle**. Built on Netlify Functions + Google Drive storage.
 
 ---
 
 ### 🧮 Incentive Automation API
 
-Web API + dashboard that replaced a full day of monthly Excel work for salesman voucher-incentive calculations across 22 stores. 63,000+ voucher records, per-store owner-active logic, charm pricing baked in. A day's work → one click.
+I built a REST API + dashboard that replaced a full day of monthly manual Excel work. **63,000+ voucher records, 22 stores, per-store owner-active rule, 28 rate tiers, charm pricing** — all computed server-side. Month-end incentive calculation: **8 hours → one click**. Stack: `Node.js` `Supabase` `PostgreSQL` `Netlify Functions`.
 
 ---
 
 ### 💬 WhatsApp Birthday Marketing Engine
 
-Escalating DOB-driven birthday campaigns (7 / 5 / 2 / 0 days out) via AiSensy WhatsApp API. Pulls live customer DOBs, generates personalised offer codes, tracks redemption. 22,000+ customer base.
+I built an escalating DOB-driven campaign engine for a **22,000+ customer base**. Sends personalised WhatsApp messages at **7 / 5 / 2 / 0 days before birthday** via `AiSensy API` — auto-generates unique offer codes from live POS DOB data, tracks redemption per customer. Zero manual steps after setup.
 
 ---
 
@@ -107,13 +109,13 @@ Escalating DOB-driven birthday campaigns (7 / 5 / 2 / 0 days out) via AiSensy Wh
 
 ### 📞 Call Analysis CRM
 
-AI-powered sales call pipeline: phone recordings sync automatically via **FolderSync → Google Drive → Apps Script** (attaches each recording to the right salesperson's log, auto-discovered by name + date) → **AI summarises** every call. ~10 salespeople, zero manual steps.
+I built a zero-manual AI call analysis pipeline: `FolderSync` → `Google Drive` → `Google Apps Script` → `Gemini LLM`. **30,000+ recordings backfilled**. New calls appear scored in the dashboard **within 60 seconds** of hanging up. Gemini scores pitch quality, objection handling, close attempt, and brand knowledge (0–10) — flagged calls auto-surface for manager coaching. ~10 salespeople, 3 brands, zero extra app installs required.
 
 ---
 
 ### ⭐ Google Review AI
 
-Automated Google My Business reply generation with Gemini + negative-review escalation to management *(pending GBP API access)*.
+I built an automated Google My Business reply system across **3 brands** (Jus Jumpin / Stoneberry Resort / Knockout Sports Bar). `Gemini LLM` generates brand-voice replies personalised to each review. Ratings ≤2 stars → **instant escalation to outlet manager via WhatsApp** before the complaint compounds. Stack: `Node.js` `Gemini API` `Netlify Functions` `GBP API`.
 
 ---
 
@@ -148,16 +150,22 @@ Automated Google My Business reply generation with Gemini + negative-review esca
 
 ## Skills
 
+![SQL](https://img.shields.io/badge/SQL-4479A1?style=flat-square&logo=mysql&logoColor=white)
+![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
 ![Node.js](https://img.shields.io/badge/Node.js-339933?style=flat-square&logo=nodedotjs&logoColor=white)
-![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=flat-square&logo=postgresql&logoColor=white)
 ![Supabase](https://img.shields.io/badge/Supabase-3ECF8E?style=flat-square&logo=supabase&logoColor=white)
-![Google Gemini](https://img.shields.io/badge/Gemini_LLM-412991?style=flat-square&logo=google&logoColor=white)
-![Netlify](https://img.shields.io/badge/Netlify-00C7B7?style=flat-square&logo=netlify&logoColor=white)
-![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?style=flat-square&logo=githubactions&logoColor=white)
-![Google Apps Script](https://img.shields.io/badge/Apps_Script-34A853?style=flat-square&logo=google&logoColor=white)
+![ETL](https://img.shields.io/badge/ETL%20%2F%20Data%20Pipeline-FF6C37?style=flat-square&logo=apacheairflow&logoColor=white)
 ![REST API](https://img.shields.io/badge/REST_APIs-FF6C37?style=flat-square&logo=postman&logoColor=white)
+![Google Gemini](https://img.shields.io/badge/LLM%20%2F%20Gemini_API-412991?style=flat-square&logo=google&logoColor=white)
+![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?style=flat-square&logo=githubactions&logoColor=white)
+![Netlify](https://img.shields.io/badge/Netlify-00C7B7?style=flat-square&logo=netlify&logoColor=white)
+![Google Apps Script](https://img.shields.io/badge/Apps_Script-34A853?style=flat-square&logo=google&logoColor=white)
+![BI Platform](https://img.shields.io/badge/BI%20Platform-185FA5?style=flat-square&logo=chartdotjs&logoColor=white)
+![Real-Time Analytics](https://img.shields.io/badge/Real--Time%20Analytics-0F6E56?style=flat-square&logo=grafana&logoColor=white)
+![Data Integration](https://img.shields.io/badge/Data%20Integration-854F0B?style=flat-square&logo=databricks&logoColor=white)
+![Git](https://img.shields.io/badge/Git-F05032?style=flat-square&logo=git&logoColor=white)
 
 ---
 
