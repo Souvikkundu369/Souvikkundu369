@@ -93,7 +93,6 @@ Escalating DOB-driven birthday campaigns (7 / 5 / 2 / 0 days out) via AiSensy Wh
 
 - **ESSL + GratyHR Astra integration** — biometric punch data auto-synced into GratyHR Astra HR software via API
 - **ESSL Biometric API** — auto employee provisioning and automated monthly attendance reports
-- **Kolkata HO Salary Attendance** — biometric export → formula-driven payroll status (P / H / A / W/O) for 87 employees
 
 ---
 
@@ -140,6 +139,8 @@ Automated Google My Business reply generation with Gemini + negative-review esca
 | 🎤 | **[ARIA AI Interview System](https://github.com/Souvikkundu369/aria-ai-interview)** | `Gemini` `Netlify` |
 | 🧮 | **[Incentive Automation API](https://github.com/Souvikkundu369/incentive-automation-api)** | `Supabase` `REST API` |
 | 💬 | **[WhatsApp Marketing Automation](https://github.com/Souvikkundu369/whatsapp-marketing-automation)** | `Node.js` `AiSensy` |
+| ⭐ | **[Google Review AI](https://github.com/Souvikkundu369/google-review-ai)** | `Gemini` `GBP API` |
+| 📞 | **[AI Call Analysis CRM](https://github.com/Souvikkundu369/call-analysis-crm)** | `Gemini` `Apps Script` |
 
 ---
 
