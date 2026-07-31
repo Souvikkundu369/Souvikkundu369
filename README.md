@@ -141,6 +141,7 @@ Automated Google My Business reply generation with Gemini + negative-review esca
 | 💬 | **[WhatsApp Marketing Automation](https://github.com/Souvikkundu369/whatsapp-marketing-automation)** | `Node.js` `AiSensy` |
 | ⭐ | **[Google Review AI](https://github.com/Souvikkundu369/google-review-ai)** | `Gemini` `GBP API` |
 | 📞 | **[AI Call Analysis CRM](https://github.com/Souvikkundu369/call-analysis-crm)** | `Gemini` `Apps Script` |
+| 📅 | **[Monthly YoY Performance Reports](https://github.com/Souvikkundu369/monthly-yoy-reports)** — recurring BI pipeline, frozen monthly reports vs prior year | `Node.js` `Multi-POS` |
 
 ---
 
