@@ -93,6 +93,7 @@ Escalating DOB-driven birthday campaigns (7 / 5 / 2 / 0 days out) via AiSensy Wh
 
 - **ESSL + GratyHR Astra integration** — biometric punch data auto-synced into GratyHR Astra HR software via API
 - **ESSL Biometric API** — auto employee provisioning and automated monthly attendance reports
+- **ESSL server login recovery** — diagnosed complete login failure on the iClock web server; traced root cause to SQL Server `essl` service account password auto-expiry; reset credentials via SSMS, ran `iisreset`, and disabled password-expiry policy on the service account to prevent recurrence. Attendance sync restored in under 10 minutes
 
 ---
 
