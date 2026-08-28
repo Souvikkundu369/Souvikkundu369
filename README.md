@@ -13,7 +13,7 @@ I design and run the complete data + AI stack for a multi-outlet family-entertai
 <td align="center"><b>25+</b><br><sub>outlets across India</sub></td>
 <td align="center"><b>3</b><br><sub>POS systems unified</sub></td>
 <td align="center"><b>25+</b><br><sub>analytics modules</sub></td>
-<td align="center"><b>10+</b><br><sub>production systems</sub></td>
+<td align="center"><b>12+</b><br><sub>production systems</sub></td>
 <td align="center"><b>1</b><br><sub>person</sub></td>
 </tr>
 </table>
@@ -106,6 +106,12 @@ I built an escalating DOB-driven campaign engine for a **22,000+ customer base**
 
 ---
 
+### 🎂 Birthday WhatsApp Automation
+
+18,700+ child DOBs sitting unused in the POS. I built an escalating offer engine on top of them: a daily cron pulls upcoming birthdays, assigns time-sensitive discount codes (7 / 5 / 2 / 0 days before the party), and fires personalised WhatsApp messages via AiSensy. 703 upcoming birthdays in the next 30 days across 25+ outlets, zero manual work per week. First redemption wins; sibling codes void automatically. Ops console shows every upcoming birthday, filterable by store and status, with Excel/CSV export. Stack: `Node.js` `Netlify Functions` `AiSensy WhatsApp API` `POS DOB API`.
+
+---
+
 ### 📞 Call Analysis CRM
 
 I built a zero-manual AI call analysis pipeline: `FolderSync` → `Google Drive` → `Google Apps Script` → `Gemini LLM`. **30,000+ recordings backfilled**. New calls appear scored in the dashboard **within 60 seconds** of hanging up. Gemini scores pitch quality, objection handling, close attempt, and brand knowledge (0–10) — flagged calls auto-surface for manager coaching. ~10 salespeople, 3 brands, zero extra app installs required.
@@ -146,6 +152,8 @@ I built an automated Google My Business reply system across **3 brands** (Jus Ju
 | 📅 | **[Monthly YoY Performance Reports](https://github.com/Souvikkundu369/monthly-yoy-reports)** — recurring BI pipeline, frozen monthly reports vs prior year | `Node.js` `Multi-POS` |
 | 🏦 | **[Manual Payments Ledger](https://github.com/Souvikkundu369/manual-payments-ledger)** — bank statement ingestion + 3-stage reconciliation engine on Cloudflare Workers | `Cloudflare Workers` `KV` |
 | 📒 | **[Cashbook Dashboard](https://github.com/Souvikkundu369/cashbook-dashboard)** — per-store daily cash-closing + HO consolidated view via Apps Script | `Apps Script` `Sheets` |
+| 🎂 | **[Birthday Automation](https://github.com/Souvikkundu369/birthday-automation)** — escalating WhatsApp birthday offers across 18,700+ child DOBs from 25+ outlets | `Node.js` `AiSensy` `Netlify` |
+| 📦 | **[Walk-in Package Report](https://github.com/Souvikkundu369/walkin-package-report)** — monthly pipeline classifying walk-in revenue by tier (Unlimited / 120 / 90 / Extension) | `Node.js` `ExcelJS` |
 
 ---
 
