@@ -13,7 +13,7 @@ I design and run the complete data + AI stack for a multi-outlet family-entertai
 <td align="center"><b>25+</b><br><sub>outlets across India</sub></td>
 <td align="center"><b>3</b><br><sub>POS systems unified</sub></td>
 <td align="center"><b>25+</b><br><sub>analytics modules</sub></td>
-<td align="center"><b>8+</b><br><sub>production systems</sub></td>
+<td align="center"><b>10+</b><br><sub>production systems</sub></td>
 <td align="center"><b>1</b><br><sub>person</sub></td>
 </tr>
 </table>
@@ -101,9 +101,8 @@ I built an escalating DOB-driven campaign engine for a **22,000+ customer base**
 
 ### 🏦 Cashbook & Payments
 
-- **Cashbook Intelligence** — daily cash-closing per store, HO consolidated dashboard
-- **ICICI Bank API** *(in progress)* — auto bank reconciliation against cashbook entries
-- **Store QR Payment Gateway** *(in progress)* — outlet-level UPI payment flows
+- **Cashbook Dashboard** — per-store daily cash-closing form → Apps Script `doPost` webhook → central Google Sheet → HO consolidated view. Live across all 25+ outlets. Grand = Card + Cash + UPI + Excess; CashInHand = CashTotal − Deposits. Late submissions auto-flagged; immutable audit log per store.
+- **Manual Payments Ledger** — Cloudflare Worker (no origin server) serving three tools behind Basic Auth: `/upload` parses bank statements and classifies PSP entity names (BharatPe = "Resilient Innovations", Zomato = "Eternal Limited"); `/export` outputs clean ledger for any date range; `/reconcile` runs a three-stage match engine (exact → overnight fuzzy → flag) and shows traffic-light status per store per day. Live at `jusjumpin-payments.green-king-ac34.workers.dev`. Zero infrastructure overhead — `wrangler deploy` in 30 seconds.
 
 ---
 
@@ -145,6 +144,8 @@ I built an automated Google My Business reply system across **3 brands** (Jus Ju
 | ⭐ | **[Google Review AI](https://github.com/Souvikkundu369/google-review-ai)** | `Gemini` `GBP API` |
 | 📞 | **[AI Call Analysis CRM](https://github.com/Souvikkundu369/call-analysis-crm)** | `Gemini` `Apps Script` |
 | 📅 | **[Monthly YoY Performance Reports](https://github.com/Souvikkundu369/monthly-yoy-reports)** — recurring BI pipeline, frozen monthly reports vs prior year | `Node.js` `Multi-POS` |
+| 🏦 | **[Manual Payments Ledger](https://github.com/Souvikkundu369/manual-payments-ledger)** — bank statement ingestion + 3-stage reconciliation engine on Cloudflare Workers | `Cloudflare Workers` `KV` |
+| 📒 | **[Cashbook Dashboard](https://github.com/Souvikkundu369/cashbook-dashboard)** — per-store daily cash-closing + HO consolidated view via Apps Script | `Apps Script` `Sheets` |
 
 ---
 
