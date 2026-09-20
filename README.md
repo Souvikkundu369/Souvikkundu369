@@ -13,7 +13,7 @@ I design and run the complete data + AI stack for a multi-outlet family-entertai
 <td align="center"><b>25+</b><br><sub>outlets across India</sub></td>
 <td align="center"><b>3</b><br><sub>POS systems unified</sub></td>
 <td align="center"><b>25+</b><br><sub>analytics modules</sub></td>
-<td align="center"><b>12+</b><br><sub>production systems</sub></td>
+<td align="center"><b>13+</b><br><sub>production systems</sub></td>
 <td align="center"><b>1</b><br><sub>person</sub></td>
 </tr>
 </table>
@@ -81,7 +81,7 @@ I built an async AI interview system deployed at `jusjumpin-hr-interviews.netlif
 
 ### 🧮 Incentive Automation API
 
-I built a REST API + dashboard that replaced a full day of monthly manual Excel work. **63,000+ voucher records, 25+ stores, per-store owner-active rule, 28 rate tiers, charm pricing** — all computed server-side. Month-end incentive calculation: **8 hours → one click**. Stack: `Node.js` `Supabase` `PostgreSQL` `Netlify Functions`.
+I built a REST API + dashboard that replaced a full day of monthly manual Excel work. **63,000+ voucher records, 25+ stores, per-store owner-active rule, 28 rate tiers, charm pricing** — all computed server-side. Month-end incentive calculation: **8 hours → one click**. When Netlify's 10-second function limit forced a clunky chunked-fetch workaround, I migrated the whole pipeline to **Cloudflare Workers** — the full month now pulls in one request in **4.4 seconds**, no chunking needed. Also now covers non-voucher bonuses (birthday/feedback/review) and an HO consolidated payout report. Stack: `Cloudflare Workers` `Supabase` `PostgreSQL`.
 
 ---
 
@@ -102,7 +102,7 @@ I built an escalating DOB-driven campaign engine for a **22,000+ customer base**
 ### 🏦 Cashbook & Payments
 
 - **Cashbook Dashboard** — per-store daily cash-closing form → Apps Script `doPost` webhook → central Google Sheet → HO consolidated view. Live across all 25+ outlets. Grand = Card + Cash + UPI + Excess; CashInHand = CashTotal − Deposits. Late submissions auto-flagged; immutable audit log per store.
-- **Manual Payments Ledger** — Cloudflare Worker (no origin server) serving three tools behind Basic Auth: `/upload` parses bank statements and classifies PSP entity names (BharatPe = "Resilient Innovations", Zomato = "Eternal Limited"); `/export` outputs clean ledger for any date range; `/reconcile` runs a three-stage match engine (exact → overnight fuzzy → flag) and shows traffic-light status per store per day. Live at `jusjumpin-payments.green-king-ac34.workers.dev`. Zero infrastructure overhead — `wrangler deploy` in 30 seconds.
+- **Manual Payments Ledger** — grew from a bank-reconciliation tool into a 6-module finance system on the same Cloudflare Worker: Bills, Party Master, Bill↔Payment Matching, Manage P&L, **GST Ledger**, and **TDS Ledger**. `/upload` parses bank statements and classifies PSP entity names (BharatPe = "Resilient Innovations", Zomato = "Eternal Limited"); `/reconcile` runs a three-stage match engine (exact → overnight fuzzy → flag) with traffic-light status per store per day; GST/TDS ledgers ingest real statutory source formats (GSTR-2B's 12 state sheets, per-vendor Form 16A PDFs). Live at `jusjumpin-payments.green-king-ac34.workers.dev`. Zero infrastructure overhead — `wrangler deploy` in 30 seconds.
 
 ---
 
@@ -115,6 +115,12 @@ I built an escalating DOB-driven campaign engine for a **22,000+ customer base**
 ### 📞 Call Analysis CRM
 
 I built a zero-manual AI call analysis pipeline: `FolderSync` → `Google Drive` → `Google Apps Script` → `Gemini LLM`. **30,000+ recordings backfilled**. New calls appear scored in the dashboard **within 60 seconds** of hanging up. Gemini scores pitch quality, objection handling, close attempt, and brand knowledge (0–10) — flagged calls auto-surface for manager coaching. ~10 salespeople, 3 brands, zero extra app installs required.
+
+---
+
+### 🎙️ AI Conduct Audit
+
+I built a call-conduct monitor for the CCTV/security department: recordings sync in automatically, and **Gemini Flash audits the audio directly — no transcription step** — for rudeness or hostility from either party. Flagged calls surface to managers within ~15 minutes for review and action. Kept deliberately separate from the sales call-scoring system since the two serve different audiences with different sensitivity. Stack: `Google Apps Script` `Gemini API`.
 
 ---
 
@@ -133,9 +139,10 @@ I built an automated Google My Business reply system across **3 brands** (Jus Ju
 ![Supabase](https://img.shields.io/badge/Supabase-3ECF8E?style=flat&logo=supabase&logoColor=white)
 ![LLM/Gemini](https://img.shields.io/badge/LLM%20%2F%20Gemini-412991?style=flat&logo=google&logoColor=white)
 ![Netlify](https://img.shields.io/badge/Netlify-00C7B7?style=flat&logo=netlify&logoColor=white)
+![Cloudflare Workers](https://img.shields.io/badge/Cloudflare_Workers-F38020?style=flat&logo=cloudflare&logoColor=white)
 ![Git](https://img.shields.io/badge/Git-F05032?style=flat&logo=git&logoColor=white)
 
-`JavaScript` · `Node.js` · `Python` · `PostgreSQL` · `Supabase` · `REST APIs` · `LLM / Gemini API` · `PetPooja POS API` · `Semnox / Parafait API` · `ESSL Biometric API` · `GratyHR Astra API` · `AiSensy WhatsApp API` · `ICICI Bank API` · `Brevo` · `Netlify Functions` · `GitHub Actions` · `Google Apps Script` · `Leaflet.js` · `Chart.js`
+`JavaScript` · `Node.js` · `Python` · `PostgreSQL` · `Supabase` · `REST APIs` · `LLM / Gemini API` · `PetPooja POS API` · `Semnox / Parafait API` · `ESSL Biometric API` · `GratyHR Astra API` · `AiSensy WhatsApp API` · `ICICI Bank API` · `Brevo` · `Netlify Functions` · `Cloudflare Workers` · `GitHub Actions` · `Google Apps Script` · `Leaflet.js` · `Chart.js`
 
 ---
 
@@ -154,6 +161,8 @@ I built an automated Google My Business reply system across **3 brands** (Jus Ju
 | 📒 | **[Cashbook Dashboard](https://github.com/Souvikkundu369/cashbook-dashboard)** — per-store daily cash-closing + HO consolidated view via Apps Script | `Apps Script` `Sheets` |
 | 🎂 | **[Birthday Automation](https://github.com/Souvikkundu369/birthday-automation)** — escalating WhatsApp birthday offers across 18,700+ child DOBs from 25+ outlets | `Node.js` `AiSensy` `Netlify` |
 | 📦 | **[Walk-in Package Report](https://github.com/Souvikkundu369/walkin-package-report)** — monthly pipeline classifying walk-in revenue by tier (Unlimited / 120 / 90 / Extension) | `Node.js` `ExcelJS` |
+| 🎙️ | **[AI Conduct Audit](https://github.com/Souvikkundu369/ai-conduct-audit)** — CCTV/security call monitoring, audio straight to Gemini with no transcription step | `Apps Script` `Gemini` |
+| 🕒 | **[ESSL Attendance Dashboard](https://github.com/Souvikkundu369/essl-attendance-dashboard)** — live biometric punch data direct from SQL Server, public read-only API | `Node.js` `SQL Server` |
 
 ---
 
