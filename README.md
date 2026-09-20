@@ -81,7 +81,7 @@ I built an async AI interview system deployed at `jusjumpin-hr-interviews.netlif
 
 ### 🧮 Incentive Automation API
 
-I built a REST API + dashboard that replaced a full day of monthly manual Excel work. **63,000+ voucher records, 25+ stores, per-store owner-active rule, 28 rate tiers, charm pricing** — all computed server-side. Month-end incentive calculation: **8 hours → one click**. When Netlify's 10-second function limit forced a clunky chunked-fetch workaround, I migrated the whole pipeline to **Cloudflare Workers** — the full month now pulls in one request in **4.4 seconds**, no chunking needed. Also now covers non-voucher bonuses (birthday/feedback/review) and an HO consolidated payout report. Stack: `Cloudflare Workers` `Supabase` `PostgreSQL`.
+I built a REST API + dashboard that replaced a full day of monthly manual Excel work. **63,000+ voucher records, 25+ stores, per-store owner-active rule, 28 rate tiers, charm pricing** — all computed server-side. Month-end incentive calculation: **8 hours → one click**. When Netlify's 10-second function limit forced a clunky chunked-fetch workaround, I migrated the whole pipeline to **Cloudflare Workers** — the full month now pulls in one request in **4.4 seconds**, no chunking needed. Now a full multi-tab payout suite — non-voucher bonuses (birthday/feedback/review), a manual F&B/kitchen points entry tab for staff not captured by POS data, an HO consolidated report, and one Final Merge export combining every incentive type into a single payout sheet. Stack: `Cloudflare Workers` `Supabase` `PostgreSQL`.
 
 ---
 
