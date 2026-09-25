@@ -13,7 +13,7 @@ I design and run the complete data + AI stack for a multi-outlet family-entertai
 <td align="center"><b>25+</b><br><sub>outlets across India</sub></td>
 <td align="center"><b>3</b><br><sub>POS systems unified</sub></td>
 <td align="center"><b>25+</b><br><sub>analytics modules</sub></td>
-<td align="center"><b>13+</b><br><sub>production systems</sub></td>
+<td align="center"><b>15+</b><br><sub>production systems</sub></td>
 <td align="center"><b>1</b><br><sub>person</sub></td>
 </tr>
 </table>
@@ -124,9 +124,15 @@ I built a call-conduct monitor for the CCTV/security department: recordings sync
 
 ---
 
-### ⭐ Google Review AI
+### ⭐ Google Reviews & Ratings — AI Replies + Live Dashboard *(live on Render)*
 
-I built an automated Google My Business reply system across **3 brands** (Jus Jumpin / Stoneberry Resort / Knockout Sports Bar). `Gemini LLM` generates brand-voice replies personalised to each review. Ratings ≤2 stars → **instant escalation to outlet manager via WhatsApp** before the complaint compounds. Stack: `Node.js` `Gemini API` `Netlify Functions` `GBP API`.
+I built an automated Google Business Profile system across **3 brands** (Jus Jumpin / Stoneberry Resort / Knockout Sports Bar). `Gemini LLM` generates brand-voice replies personalised to each review; ratings ≤2 stars trigger **instant escalation to the outlet manager via WhatsApp**. It also runs a **live ratings dashboard across all 27 locations** — replacing 27 separate Google dashboards with one page that shows a review-count-weighted chain average, colour-codes every store against its own target, logs rating *drops* over time, and computes **exactly how many more 5★ reviews each store needs to hit target** (and correctly reports "impossible" when the target is a perfect 5.0). Stack: `Node.js` `Express` `Render` `Gemini API` `GBP API` `Sheets API`.
+
+---
+
+### 📍 Geo-Attendance — Location-Verified Attendance *(live)*
+
+Biometric punch-in proves someone arrived; it doesn't prove they stayed. I built a geofenced attendance system where staff phones report GPS via a free open-source app (no custom mobile app to build or distribute), and a `Cloudflare Worker` decides whether each person is at their assigned store during their assigned shift — with a live map, per-shift timeline reports, and escalating email/WhatsApp alerts. Most of the work went into **not raising false alarms**: GPS-error allowance, junk-reading rejection, and a two-consecutive-readings rule before anything counts as an exit. Privacy was a design constraint — coordinates are stored only inside shift windows and the trail auto-deletes after 90 days. Runs within Cloudflare's free tier at ~150 staff, enforced by budget tests in CI. Stack: `Cloudflare Workers` `D1` `Leaflet.js` `AiSensy`.
 
 ---
 
@@ -154,7 +160,8 @@ I built an automated Google My Business reply system across **3 brands** (Jus Ju
 | 🎤 | **[ARIA AI Interview System](https://github.com/Souvikkundu369/aria-ai-interview)** | `Gemini` `Netlify` |
 | 🧮 | **[Incentive Automation API](https://github.com/Souvikkundu369/incentive-automation-api)** | `Supabase` `REST API` |
 | 💬 | **[WhatsApp Marketing Automation](https://github.com/Souvikkundu369/whatsapp-marketing-automation)** | `Node.js` `AiSensy` |
-| ⭐ | **[Google Review AI](https://github.com/Souvikkundu369/google-review-ai)** | `Gemini` `GBP API` |
+| ⭐ | **[Google Reviews & Ratings](https://github.com/Souvikkundu369/google-review-ai)** — AI replies + live 27-location ratings dashboard with "5★ needed to hit target" math | `Gemini` `GBP API` `Render` |
+| 📍 | **[Geo-Attendance](https://github.com/Souvikkundu369/geo-attendance)** — geofenced staff attendance, false-alarm-resistant, privacy-bounded, free-tier at ~150 staff | `CF Workers` `D1` `Leaflet` |
 | 📞 | **[AI Call Analysis CRM](https://github.com/Souvikkundu369/call-analysis-crm)** | `Gemini` `Apps Script` |
 | 📅 | **[Monthly YoY Performance Reports](https://github.com/Souvikkundu369/monthly-yoy-reports)** — recurring BI pipeline, frozen monthly reports vs prior year | `Node.js` `Multi-POS` |
 | 🏦 | **[Manual Payments Ledger](https://github.com/Souvikkundu369/manual-payments-ledger)** — bank statement ingestion + 3-stage reconciliation engine on Cloudflare Workers | `Cloudflare Workers` `KV` |
