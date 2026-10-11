@@ -13,7 +13,7 @@ I design and run the complete data + AI stack for a multi-outlet family-entertai
 <td align="center"><b>25+</b><br><sub>outlets across India</sub></td>
 <td align="center"><b>3</b><br><sub>POS systems unified</sub></td>
 <td align="center"><b>25+</b><br><sub>analytics modules</sub></td>
-<td align="center"><b>15+</b><br><sub>production systems</sub></td>
+<td align="center"><b>17+</b><br><sub>production systems</sub></td>
 <td align="center"><b>1</b><br><sub>person</sub></td>
 </tr>
 </table>
@@ -26,7 +26,7 @@ I design and run the complete data + AI stack for a multi-outlet family-entertai
 
 I built a single-page analytics dashboard covering an entire entertainment chain — **25+ outlets, 2 brands, 3 POS systems unified into one source of truth**. Leadership now opens a browser instead of waiting on manual spreadsheet exports.
 
-I reconciled **Semnox/Parafait** (arcade/wallet), **PetPooja** (F&B), and the internal activity API into a single trusted revenue definition. I diagnosed and fixed a POS API bug that silently **double-counted F&B revenue ~2× every night** — dashboard numbers now match source systems exactly. I migrated the full data layer to **Supabase/PostgreSQL + GitHub Actions** sync pipelines, eliminating the 10-second timeout failures on the previous cache system.
+I reconciled **Semnox/Parafait** (arcade/wallet), **PetPooja** (F&B), and the internal activity API into a single trusted revenue definition. I diagnosed and fixed a POS API bug that silently **double-counted F&B revenue ~2× every night** — dashboard numbers now match source systems exactly. I migrated the full data layer to **Supabase/PostgreSQL + GitHub Actions** sync pipelines, eliminating the 10-second timeout failures on the previous cache system. When GitHub began delaying scheduled runs by ~5 hours, I moved the clock to a **Cloudflare Worker cron** so reports land on the hour. When a POS vendor changed its API overnight and the sync kept reporting "success" while writing ₹0, I fixed the call and, more importantly, the failure mode: **a refused request can never again be recorded as a zero-sales day**.
 
 **Revenue & Operations**
 - Revenue & Total Sales — per outlet, per company, per day; activity / F&B / combined views
@@ -69,13 +69,13 @@ I reconciled **Semnox/Parafait** (arcade/wallet), **PetPooja** (F&B), and the in
 - Multi-POS — Semnox/Parafait (arcade/wallet) + PetPooja (F&B) + internal activity API
 - AI Assistant — ask questions in plain English via Gemini LLM (voice + text, live data context)
 - Global Export — PDF and Excel from every single tab
-- Daily Digest — automated 9am IST email to management via Brevo
+- Scheduled reporting — "sales so far" flashes at 3 PM, 6 PM and 9 PM plus a closing brief for each brand, each run syncing fresh data first and landing on the hour
 
 ---
 
 ### 🎤 ARIA — AI Interview System *(live in production)*
 
-I built an async AI interview system deployed at `jusjumpin-hr-interviews.netlify.app`. Candidates answer in their own time → **Gemini LLM scores structured rubrics → hiring managers read one summary instead of listening to 40+ recorded calls per cycle**. Built on Netlify Functions + Google Drive storage.
+I built an async AI interview system, live in production. Candidates answer in their own time → **Gemini LLM scores structured rubrics → hiring managers read one summary instead of listening to 40+ recorded calls per cycle**. Built on Netlify Functions + Google Drive storage.
 
 ---
 
@@ -102,7 +102,7 @@ I built an escalating DOB-driven campaign engine for a **22,000+ customer base**
 ### 🏦 Cashbook & Payments
 
 - **Cashbook Dashboard** — per-store daily cash-closing form → Apps Script `doPost` webhook → central Google Sheet → HO consolidated view. Live across all 25+ outlets. Grand = Card + Cash + UPI + Excess; CashInHand = CashTotal − Deposits. Late submissions auto-flagged; immutable audit log per store.
-- **Manual Payments Ledger** — grew from a bank-reconciliation tool into a 6-module finance system on the same Cloudflare Worker: Bills, Party Master, Bill↔Payment Matching, Manage P&L, **GST Ledger**, and **TDS Ledger**. `/upload` parses bank statements and classifies PSP entity names (BharatPe = "Resilient Innovations", Zomato = "Eternal Limited"); `/reconcile` runs a three-stage match engine (exact → overnight fuzzy → flag) with traffic-light status per store per day; GST/TDS ledgers ingest real statutory source formats (GSTR-2B's 12 state sheets, per-vendor Form 16A PDFs). Live at `jusjumpin-payments.green-king-ac34.workers.dev`. Zero infrastructure overhead — `wrangler deploy` in 30 seconds.
+- **Manual Payments Ledger** — grew from a bank-reconciliation tool into a 6-module finance system on the same Cloudflare Worker: Bills, Party Master, Bill↔Payment Matching, Manage P&L, **GST Ledger**, and **TDS Ledger**. `/upload` parses bank statements and classifies PSP entity names (BharatPe = "Resilient Innovations", Zomato = "Eternal Limited"); `/reconcile` runs a three-stage match engine (exact → overnight fuzzy → flag) with traffic-light status per store per day; GST/TDS ledgers ingest real statutory source formats (GSTR-2B's 12 state sheets, per-vendor Form 16A PDFs). Live in production. Zero infrastructure overhead — `wrangler deploy` in 30 seconds.
 
 ---
 
@@ -126,13 +126,25 @@ I built a call-conduct monitor for the CCTV/security department: recordings sync
 
 ### ⭐ Google Reviews & Ratings — AI Replies + Live Dashboard *(live on Render)*
 
-I built an automated Google Business Profile system across **3 brands** (Jus Jumpin / Stoneberry Resort / Knockout Sports Bar). `Gemini LLM` generates brand-voice replies personalised to each review; ratings ≤2 stars trigger **instant escalation to the outlet manager via WhatsApp**. It also runs a **live ratings dashboard across all 27 locations** — replacing 27 separate Google dashboards with one page that shows a review-count-weighted chain average, colour-codes every store against its own target, logs rating *drops* over time, and computes **exactly how many more 5★ reviews each store needs to hit target** (and correctly reports "impossible" when the target is a perfect 5.0). Stack: `Node.js` `Express` `Render` `Gemini API` `GBP API` `Sheets API`.
+I built an automated Google Business Profile system across **3 brands** (Jus Jumpin / Stoneberry Resort / Knockout Sports Bar). `Gemini LLM` generates brand-voice replies personalised to each review; ratings ≤2 stars trigger **instant escalation to the outlet manager via WhatsApp**. It also runs a **live ratings dashboard across all 25 live locations** — replacing 25 separate Google dashboards with one page that shows a review-count-weighted chain average, colour-codes every store against its own target, logs rating *drops* over time, and computes **exactly how many more 5★ reviews each store needs to hit target** (and correctly reports "impossible" when the target is a perfect 5.0). Stack: `Node.js` `Express` `Render` `Gemini API` `GBP API` `Sheets API`.
 
 ---
 
 ### 📍 Geo-Attendance — Location-Verified Attendance *(live)*
 
 Biometric punch-in proves someone arrived; it doesn't prove they stayed. I built a geofenced attendance system where staff phones report GPS via a free open-source app (no custom mobile app to build or distribute), and a `Cloudflare Worker` decides whether each person is at their assigned store during their assigned shift — with a live map, per-shift timeline reports, and escalating email/WhatsApp alerts. Most of the work went into **not raising false alarms**: GPS-error allowance, junk-reading rejection, and a two-consecutive-readings rule before anything counts as an exit. Privacy was a design constraint — coordinates are stored only inside shift windows and the trail auto-deletes after 90 days. Runs within Cloudflare's free tier at ~150 staff, enforced by budget tests in CI. Stack: `Cloudflare Workers` `D1` `Leaflet.js` `AiSensy`.
+
+---
+
+### ☎️ Customer Feedback Call System *(live)*
+
+Every morning each store gets a ready call list of yesterday's walk-in customers, pulled straight from the POS; the team only calls and types what the customer said. Targets follow store age (a store's first 45 days need **5 calls a day**, established stores **2**), and "done" means a remark was typed, not that the customer picked up, so new stores aren't penalised for unanswered phones. Negative feedback becomes a tracked **escalation** with timestamps and an overdue alert, and every completed birthday party gets its own follow-up. The manager dashboard sees counts and first names only, never phone numbers. 190+ automated tests. Stack: `Google Apps Script` `Google Sheets` `POS API`.
+
+---
+
+### 🎫 Daily Voucher Report *(live on Render)*
+
+Replaced a voucher report built by hand in Excel every day. The approach was **decode first, automate second**: I reverse-engineered every rule from the workbook and matched two full weeks of the real hand-made sheets, store by store and day by day. That's how I learned the coloured arrows weren't "up vs yesterday" at all; they were Excel's 3-arrow icon set ranking stores against each other. Rebuilt naively, every arrow would have changed meaning. The automated version also exposed errors in the manual one. Look-alike salesperson names can be mapped, through security-definer database functions only, and the report can never write to payroll. Stack: `Node.js (zero dependencies)` `Render` `Supabase`.
 
 ---
 
@@ -160,8 +172,10 @@ Biometric punch-in proves someone arrived; it doesn't prove they stayed. I built
 | 🎤 | **[ARIA AI Interview System](https://github.com/Souvikkundu369/aria-ai-interview)** | `Gemini` `Netlify` |
 | 🧮 | **[Incentive Automation API](https://github.com/Souvikkundu369/incentive-automation-api)** | `Supabase` `REST API` |
 | 💬 | **[WhatsApp Marketing Automation](https://github.com/Souvikkundu369/whatsapp-marketing-automation)** | `Node.js` `AiSensy` |
-| ⭐ | **[Google Reviews & Ratings](https://github.com/Souvikkundu369/google-review-ai)** — AI replies + live 27-location ratings dashboard with "5★ needed to hit target" math | `Gemini` `GBP API` `Render` |
+| ⭐ | **[Google Reviews & Ratings](https://github.com/Souvikkundu369/google-review-ai)** — AI replies + live 25-location ratings dashboard with "5★ needed to hit target" math | `Gemini` `GBP API` `Render` |
 | 📍 | **[Geo-Attendance](https://github.com/Souvikkundu369/geo-attendance)** — geofenced staff attendance, false-alarm-resistant, privacy-bounded, free-tier at ~150 staff | `CF Workers` `D1` `Leaflet` |
+| ☎️ | **[Customer Feedback Call System](https://github.com/Souvikkundu369/feedback-call-system)** — daily per-store call lists from the POS, escalation tracking, birthday follow-ups | `Apps Script` `Sheets` |
+| 🎫 | **[Daily Voucher Report](https://github.com/Souvikkundu369/voucher-daily-report)** — a hand-built Excel report decoded rule by rule, then automated | `Node.js` `Render` `Supabase` |
 | 📞 | **[AI Call Analysis CRM](https://github.com/Souvikkundu369/call-analysis-crm)** | `Gemini` `Apps Script` |
 | 📅 | **[Monthly YoY Performance Reports](https://github.com/Souvikkundu369/monthly-yoy-reports)** — recurring BI pipeline, frozen monthly reports vs prior year | `Node.js` `Multi-POS` |
 | 🏦 | **[Manual Payments Ledger](https://github.com/Souvikkundu369/manual-payments-ledger)** — bank statement ingestion + 3-stage reconciliation engine on Cloudflare Workers | `Cloudflare Workers` `KV` |
