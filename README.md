@@ -13,7 +13,7 @@ I design and run the complete data + AI stack for a multi-outlet family-entertai
 <td align="center"><b>25+</b><br><sub>outlets across India</sub></td>
 <td align="center"><b>3</b><br><sub>POS systems unified</sub></td>
 <td align="center"><b>25+</b><br><sub>analytics modules</sub></td>
-<td align="center"><b>17+</b><br><sub>production systems</sub></td>
+<td align="center"><b>18+</b><br><sub>production systems</sub></td>
 <td align="center"><b>1</b><br><sub>person</sub></td>
 </tr>
 </table>
@@ -26,7 +26,7 @@ I design and run the complete data + AI stack for a multi-outlet family-entertai
 
 I built a single-page analytics dashboard covering an entire entertainment chain — **25+ outlets, 2 brands, 3 POS systems unified into one source of truth**. Leadership now opens a browser instead of waiting on manual spreadsheet exports.
 
-I reconciled **Semnox/Parafait** (arcade/wallet), **PetPooja** (F&B), and the internal activity API into a single trusted revenue definition. I diagnosed and fixed a POS API bug that silently **double-counted F&B revenue ~2× every night** — dashboard numbers now match source systems exactly. I migrated the full data layer to **Supabase/PostgreSQL + GitHub Actions** sync pipelines, eliminating the 10-second timeout failures on the previous cache system. When GitHub began delaying scheduled runs by ~5 hours, I moved the clock to a **Cloudflare Worker cron** so reports land on the hour. When a POS vendor changed its API overnight and the sync kept reporting "success" while writing ₹0, I fixed the call and, more importantly, the failure mode: **a refused request can never again be recorded as a zero-sales day**.
+I reconciled **Semnox/Parafait** (arcade/wallet), **PetPooja** (F&B), and the internal activity API into a single trusted revenue definition. I diagnosed and fixed a POS API bug that silently **double-counted F&B revenue ~2× every night** — dashboard numbers now match source systems exactly. I migrated the full data layer to **Supabase/PostgreSQL + GitHub Actions** sync pipelines, eliminating the 10-second timeout failures on the previous cache system. When GitHub began delaying scheduled runs by ~5 hours, I moved the clock to a **Cloudflare Worker cron** so reports land on the hour. When a POS vendor changed its API overnight and the sync kept reporting "success" while writing ₹0, I fixed the call and, more importantly, the failure mode: **a refused request can never again be recorded as a zero-sales day**. Every daily brief now opens with a **data check** that warns management when a source is stale or two sources disagree, so the report says when not to trust it.
 
 **Revenue & Operations**
 - Revenue & Total Sales — per outlet, per company, per day; activity / F&B / combined views
@@ -118,6 +118,12 @@ I built a zero-manual AI call analysis pipeline: `FolderSync` → `Google Drive`
 
 ---
 
+### 📵 Sales Call Monitor *(live)*
+
+Recordings only exist for answered calls, so the AI call scorer above can't see the calls that matter most: the ones nobody picked up and nobody returned. I built a zero-cost monitor on each phone's own call log (backup app → Drive → Apps Script) that measures **missed calls never called back** per salesperson, plus a 7 AM daily report, a PIN-protected dashboard and a per-person briefing PDF management uses with each salesperson. The hard part was **not accusing anyone falsely**. Phones cap their call log at a fixed size, so old calls drop off every day, and my first "deleted call" check flagged those as deletions. A call now only counts as deleted if it's recent *and* missing from two backups in a row. Built against real phone files, which revealed that one phone logs a declined call as a 0-second incoming call. 65 offline tests. Stack: `Apps Script` `Google Sheets` `Node.js`.
+
+---
+
 ### 🎙️ AI Conduct Audit
 
 I built a call-conduct monitor for the CCTV/security department: recordings sync in automatically, and **Gemini Flash audits the audio directly — no transcription step** — for rudeness or hostility from either party. Flagged calls surface to managers within ~15 minutes for review and action. Kept deliberately separate from the sales call-scoring system since the two serve different audiences with different sensitivity. Stack: `Google Apps Script` `Gemini API`.
@@ -176,6 +182,7 @@ Replaced a voucher report built by hand in Excel every day. The approach was **d
 | 📍 | **[Geo-Attendance](https://github.com/Souvikkundu369/geo-attendance)** — geofenced staff attendance, false-alarm-resistant, privacy-bounded, free-tier at ~150 staff | `CF Workers` `D1` `Leaflet` |
 | ☎️ | **[Customer Feedback Call System](https://github.com/Souvikkundu369/feedback-call-system)** — daily per-store call lists from the POS, escalation tracking, birthday follow-ups | `Apps Script` `Sheets` |
 | 🎫 | **[Daily Voucher Report](https://github.com/Souvikkundu369/voucher-daily-report)** — a hand-built Excel report decoded rule by rule, then automated | `Node.js` `Render` `Supabase` |
+| 📵 | **[Sales Call Monitor](https://github.com/Souvikkundu369/sales-call-monitor)** — missed calls never called back, per salesperson, without false "deleted call" accusations | `Apps Script` `Sheets` |
 | 📞 | **[AI Call Analysis CRM](https://github.com/Souvikkundu369/call-analysis-crm)** | `Gemini` `Apps Script` |
 | 📅 | **[Monthly YoY Performance Reports](https://github.com/Souvikkundu369/monthly-yoy-reports)** — recurring BI pipeline, frozen monthly reports vs prior year | `Node.js` `Multi-POS` |
 | 🏦 | **[Manual Payments Ledger](https://github.com/Souvikkundu369/manual-payments-ledger)** — bank statement ingestion + 3-stage reconciliation engine on Cloudflare Workers | `Cloudflare Workers` `KV` |
